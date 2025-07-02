@@ -64,7 +64,7 @@ class ClinicController extends Controller
     public function show($id)
     {
         // Clinic with doctors loaded
-        $clinic = Clinic::with('doctors')->find($id);
+        $clinic = Clinic::with('doctors.user')->find($id);
     
         if (!$clinic) {
             return response()->json(['error' => 'Clinic not found'], 404);

@@ -50,9 +50,7 @@ class UserController extends Controller
             'blood_type'    => 'required_if:role,patient|in:A+, A-, B+, B-, AB+, AB-, O+,O-|nullable',
             
 
-            // حقول خاصة بالأطباء
-            'clinic_id'     => 'required_if:role,doctor|exists:clinics,id',
-            'bio'=>'required_if:role,doctor|min:6|max:255'
+        
         ]);
 
         DB::beginTransaction();
@@ -87,20 +85,6 @@ class UserController extends Controller
                     'blood_type'    => $request->blood_type,
                 
                 ]);
-            } elseif ($user->role === 'doctor') {
-                Doctor::create([
-                    'user_id'   => $user->id,
-                    'clinic_id' => $request->clinic_id,
-                    'bio'=>$request->bio
-                ]);
-            }
-        
-            
-        elseif ($user->role === 'receptionist') {
-                Receptionist::create([
-                    'user_id'   => $user->id,
-                    'clinic_id' => $request->clinic_id,
-                ]);
             }
 
             $token = $user->createToken('Register Token')->plainTextToken;
@@ -111,8 +95,8 @@ class UserController extends Controller
                 'token' => $token,
             ]);*/
             return response()->json([
-                'user'  => $user->load(['patient', 'doctor','receptionist']),
-            'token' => $token,
+                'user'  => $user->load(['patient',]),
+            'token' => $token
             ], 201);
             
 
@@ -124,6 +108,74 @@ class UserController extends Controller
             ], 500);
         }
     }
+
+    public function adminAddUser(Request $request)
+{
+
+
+    $request->validate([
+        'first_name' => 'required|string|min:2|max:124',
+        'last_name' => 'required|string|min:2|max:124',
+        'email' => 'required|string|email|unique:users,email',
+        'phone' => 'required|string|unique:users,phone',
+        'role' => 'required|in:doctor,receptionist,admin,patient',
+        'gender' => 'required|in:male,female',
+        'password' => 'required|string|min:6|max:255',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'blood_type' => 'required_if:role,patient|in:A+, A-, B+, B-, AB+, AB-, O+,O-|nullable',
+        'clinic_id' => 'required_if:role,doctor,receptionist|exists:clinics,id',
+        'bio' => 'required_if:role,doctor|min:6|max:255',
+    ]);
+
+    DB::beginTransaction();
+
+    try {
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $name = time() . '-' . $file->getClientOriginalName();
+            $path = $file->storeAs('images', $name, 'public');
+            $imagePath = 'storage/' . $path;
+        }
+
+        $user = User::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'role' => $request->role,
+            'gender' => $request->gender,
+            'password' => Hash::make($request->password),
+            'image' => $imagePath,
+        ]);
+
+        if ($user->role === 'patient') {
+            Patient::create([
+                'user_id' => $user->id,
+                'blood_type' => $request->blood_type,
+            ]);
+        } elseif ($user->role === 'doctor') {
+            Doctor::create([
+                'user_id' => $user->id,
+                'clinic_id' => $request->clinic_id,
+                'bio' => $request->bio,
+            ]);
+        } elseif ($user->role === 'receptionist') {
+            Receptionist::create([
+                'user_id' => $user->id,
+                'clinic_id' => $request->clinic_id,
+            ]);
+        }
+
+        DB::commit();
+
+        return response()->json(['message' => 'User created successfully.', 'user' => $user->load(['patient', 'doctor', 'receptionist'])], 201);
+    } catch (\Exception $e) {
+        DB::rollBack();
+        return response()->json(['error' => 'Creation failed', 'message' => $e->getMessage()], 500);
+    }
+}
+
 
     public function login(Request $request)
     {

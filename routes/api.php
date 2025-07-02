@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\Doctor\ScheduleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -34,18 +35,61 @@ Route::get('clinics/{id}', [ClinicController::class, 'show']);
 
 Route::get('/doctors/{id}/schedules', [ScheduleController::class, 'show']);
 
+Route::get('/patient/{patientId}', [AppointmentController::class, 'patientAppointments']);
 
 
 
+//doctor api
 Route::middleware(['auth:sanctum', 'can:is-doctor'])->prefix('doctor')->group(function () {
     Route::get('schedules', [ScheduleController::class, 'index']);
     Route::post('schedules', [ScheduleController::class, 'store']);
     Route::delete('schedules/{id}', [ScheduleController::class, 'destroy']);
+    Route::get('/doctor/{doctorId}', [AppointmentController::class, 'doctorAppointments']);
+    Route::post('/doctor/{doctorId}/by-date', [AppointmentController::class, 'doctorAppointmentsByDate']);
+    Route::post('/doctor/today/{doctorId}', [AppointmentController::class, 'doctorAppointmentsToday']);
 });
+// admin api
 Route::middleware(['auth:sanctum', 'can:is-admin'])->group(function () {
     
     Route::post('/create-clinic', [ClinicController::class, 'store']);
     Route::post('clinics/{id}', [ClinicController::class, 'update']);
     Route::delete('clinics/{id}', [ClinicController::class, 'destroy']);
+    Route::post('/addUser', [UserController::class, 'adminAddUser']);
+});
+
+Route::prefix('appointments')->group(function () {
+    Route::get('/available/{doctorId}/{date}', [AppointmentController::class, 'availableSlots']);
+    Route::post('/book', [AppointmentController::class, 'create']);
+    Route::put('/cancel/{id}', [AppointmentController::class, 'cancel']);
+    Route::put('/status/{id}', [AppointmentController::class, 'updateStatus']);
+    Route::put('/update/{id}', [AppointmentController::class, 'update']);
+
+    Route::get('/appointment/{id}', [AppointmentController::class, 'show']);
+
+   
+});
+///receptionist api
+Route::middleware(['auth:sanctum', 'is-receptionist'])-> prefix('receptionist')->group(function(){
+    Route::post('/book', [AppointmentController::class, 'create']);
+    Route::put('/cancel/{id}', [AppointmentController::class, 'cancel']);
+    Route::put('/status/{id}', [AppointmentController::class, 'updateStatus']);
+    Route::put('/update/{id}', [AppointmentController::class, 'update']);
+    Route::get('/appointment/{id}', [AppointmentController::class, 'show']);
+    Route::POST('/all/{date}', [AppointmentController::class, 'indexPerDay']);
+    Route::get('/all', [AppointmentController::class, 'index']);
+    Route::get('/all/today', [AppointmentController::class, 'indexAppointmentsToday']);
+
+
+});
+Route::middleware(['auth:sanctum', 'is-patient'])-> prefix('patient ')->group(function(){
+    Route::post('/book', [AppointmentController::class, 'create']);
+    Route::put('/cancel/{id}', [AppointmentController::class, 'cancel']);
+    Route::put('/status/{id}', [AppointmentController::class, 'updateStatus']);
+    Route::put('/update/{id}', [AppointmentController::class, 'update']);
+    Route::get('/appointment/{id}', [AppointmentController::class, 'show']);
+    Route::get('/appointments/{id}', [AppointmentController::class, 'patientAppointments']);
+
+
+
 });
 
