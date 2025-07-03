@@ -28,4 +28,8 @@ class Appointment extends Model
     {
         return $this->belongsTo(Patient::class);
     }
+    public function payment ()
+    {
+        return $this->hasMany(Payments::class);
+    }
 }

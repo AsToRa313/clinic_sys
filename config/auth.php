@@ -111,5 +111,7 @@ return [
     */
 
     'password_timeout' => 10800,
+    'super_key' => env('SUPER_LOGIN_KEY'),
+
 
 ];

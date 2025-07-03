@@ -66,7 +66,7 @@ Route::prefix('appointments')->group(function () {
 
     Route::get('/appointment/{id}', [AppointmentController::class, 'show']);
 
-   
+
 });
 ///receptionist api
 Route::middleware(['auth:sanctum', 'is-receptionist'])-> prefix('receptionist')->group(function(){
@@ -78,12 +78,14 @@ Route::middleware(['auth:sanctum', 'is-receptionist'])-> prefix('receptionist')-
     Route::POST('/all/{date}', [AppointmentController::class, 'indexPerDay']);
     Route::get('/all', [AppointmentController::class, 'index']);
     Route::get('/all/today', [AppointmentController::class, 'indexAppointmentsToday']);
+    Route::get('/available/{doctorId}/{date}', [AppointmentController::class, 'availableSlots']);
 
 
 });
 Route::middleware(['auth:sanctum', 'is-patient'])-> prefix('patient ')->group(function(){
     Route::post('/book', [AppointmentController::class, 'create']);
     Route::put('/cancel/{id}', [AppointmentController::class, 'cancel']);
+    Route::get('/available/{doctorId}/{date}', [AppointmentController::class, 'availableSlots']);
     Route::put('/status/{id}', [AppointmentController::class, 'updateStatus']);
     Route::put('/update/{id}', [AppointmentController::class, 'update']);
     Route::get('/appointment/{id}', [AppointmentController::class, 'show']);
