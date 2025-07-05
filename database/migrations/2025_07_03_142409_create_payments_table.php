@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('appointment_id')->constrained()->onDelete('cascade');
             $table->decimal('amount')->nullable();
-            $table->enum('payment_type',['cash','card'])->default('cash');
+            $table->enum('payment_type', ['cash', 'card', 'wallet'])->default('cash');
+
             $table->date('payment_date')->nullable();
             $table->enum('status', ['paid', 'unpaid'])->default('unpaid');
 

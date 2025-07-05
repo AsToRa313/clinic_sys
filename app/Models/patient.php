@@ -25,5 +25,10 @@ class Patient extends Model
     {
         return $this->hasMany(Appointment::class);
     }
+    public function wallet()
+{
+    return $this->hasOne(Wallet::class);
+}
+
 }
 

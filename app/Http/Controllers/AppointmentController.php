@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\Payment;
 use App\Models\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -202,6 +203,8 @@ class AppointmentController extends Controller
     public function cancel($id)
     {
         $appointment = Appointment::find($id);
+       
+        
 
         if (!$appointment) {
             return response()->json(['error' => 'Appointment not found'], 404);
@@ -219,22 +222,50 @@ class AppointmentController extends Controller
         $request->validate([
             'status' => 'required|in:pending,confirmed,done,cancelled',
         ]);
-
+    
         $appointment = Appointment::find($id);
-
+        $message = 'Appointment status updated.';
+    
+    if (in_array($appointment->status, ['done', 'cancelled'])) {
+        return response()->json([
+                'error' => 'Cannot update status. Appointment is already ' . $appointment->status . '.'
+            ], 400);
+        }
         if (!$appointment) {
             return response()->json(['error' => 'Appointment not found'], 404);
         }
-
+    
         $appointment->status = $request->status;
         $appointment->save();
-
+    
+        // ✅ إذا أصبحت الحالة "done"، أنشئ سجل دفع تلقائيًا
+        if ($request->status === 'done') {
+            // تأكد أولًا أنه لم يتم إنشاء الدفع مسبقًا
+            $existingPayment = Payment::where('appointment_id', $appointment->id)->first();
+    
+            if (!$existingPayment) {
+                Payment::create([
+                    'patient_id' => $appointment->patient_id,
+                    'appointment_id' => $appointment->id,
+                    'amount' => 50.00,
+                    'payment_type' => 'cash',
+                    'payment_date' => now(),
+                    'description' => 'Automatic payment after appointment completion',
+                ]);
+    
+                $message .= ' Payment has been created successfully.';
+            } else {
+                $message .= ' Payment already exists.';
+            }
+        }
+    
         return response()->json([
             'message' => 'Appointment status updated.',
-            'appointment' => $appointment
+            'appointment' => $appointment,
+          
         ]);
     }
-
+    
     public function patientAppointments($patientId)
 {
     $appointments = Appointment::where('patient_id', $patientId)

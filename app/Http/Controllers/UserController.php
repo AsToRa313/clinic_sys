@@ -5,6 +5,7 @@ use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Receptionist;
 use App\Models\User;
+use App\Models\Wallet;
 //use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 //use Illuminate\View\View;
@@ -80,22 +81,24 @@ class UserController extends Controller
         
 
             if ($user->role === 'patient') {
-                Patient::create([
+                $patient=  Patient::create([
                     'user_id'       => $user->id,
                     'blood_type'    => $request->blood_type,
                 
                 ]);
+                
             }
+            Wallet::create([
+                'patient_id' => $patient->id,
+                'amount' => 0,
+            ]);
 
             $token = $user->createToken('Register Token')->plainTextToken;
 
             DB::commit();
-            /* return response()->json([
-                'user' => $user,
-                'token' => $token,
-            ]);*/
+        
             return response()->json([
-                'user'  => $user->load(['patient',]),
+                'user'  => $user->load(['patient']),
             'token' => $token
             ], 201);
             
@@ -298,11 +301,6 @@ public function login(Request $request)
 
     public function destroy($id)
     {
-        if (Gate::denies('delete-user')) {
-            return response()->json([
-                'error' => 'Unauthorized – Only admins can delete users.'
-            ], 403);
-        }
     
         $user = User::find($id);
     

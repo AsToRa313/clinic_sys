@@ -4,6 +4,8 @@ use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\Doctor\ScheduleController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\WalletController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -55,6 +57,7 @@ Route::middleware(['auth:sanctum', 'can:is-admin'])->group(function () {
     Route::post('clinics/{id}', [ClinicController::class, 'update']);
     Route::delete('clinics/{id}', [ClinicController::class, 'destroy']);
     Route::post('/addUser', [UserController::class, 'adminAddUser']);
+    Route::post('/deleteUser/{id}', [UserController::class, 'destroy']);
 });
 
 Route::prefix('appointments')->group(function () {
@@ -95,3 +98,20 @@ Route::middleware(['auth:sanctum', 'is-patient'])-> prefix('patient ')->group(fu
 
 });
 
+Route::prefix('payments')->group(function () {
+    Route::get('/', [PaymentController::class, 'index']);
+    Route::get('/{id}', [PaymentController::class, 'show']);
+    Route::post('/', [PaymentController::class, 'store']);
+    Route::put('/{id}', [PaymentController::class, 'update']);
+    Route::delete('/{id}', [PaymentController::class, 'destroy']);
+    Route::post('/pay/{id}', [PaymentController::class, 'payFromWallet']);
+
+
+});
+// wallet basic
+
+Route::prefix('wallet')->group(function () {
+    Route::get('/{patientId}', [WalletController::class, 'show']);          // عرض الرصيد
+    Route::post('/recharge/{patientId}', [WalletController::class, 'recharge']);  // تعبئة المحفظة
+    Route::post('/empty/{patientId}', [WalletController::class, 'empty']);      // إفراغ المحفظة
+});

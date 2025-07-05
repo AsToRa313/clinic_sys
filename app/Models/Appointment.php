@@ -30,6 +30,6 @@ class Appointment extends Model
     }
     public function payment ()
     {
-        return $this->hasMany(Payments::class);
+        return $this->hasMany(Payment::class);
     }
 }
