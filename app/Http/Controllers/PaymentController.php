@@ -87,13 +87,13 @@ class PaymentController extends Controller
         if (!$payment) {
             return response()->json(['error' => 'Payment not found'], 404);
         }
-           // Check if payment is already paid
-    if ($payment->status === 'paid') {
-        return response()->json([
-            'error' => 'Payment already completed',
-            'payment' => $payment
-        ], 400);
-    }
+    
+        if ($payment->status === 'paid') {
+            return response()->json([
+                'error' => 'Payment already completed',
+                'payment' => $payment
+            ], 400);
+        }
     
         $patient = $payment->appointment->patient;
         $user = $patient->user;
@@ -107,13 +107,11 @@ class PaymentController extends Controller
             return response()->json(['error' => 'Insufficient wallet balance'], 400);
         }
     
-        // محفظة النظام
-       /* $systemWallet = Wallet::where('is_system', true)->first();
+        $systemWallet = Wallet::where('is_system', true)->first();
         if (!$systemWallet) {
             return response()->json(['error' => 'System wallet not found'], 500);
-        }*/
+        }
     
-        // بدء المعاملة لضمان تكامل العملية
         DB::beginTransaction();
     
         try {
@@ -121,33 +119,40 @@ class PaymentController extends Controller
             $wallet->amount -= $payment->amount;
             $wallet->save();
     
-        /*    $wallet->transactions()->create([
+            $wallet->transactions()->create([
                 'amount' => -$payment->amount,
                 'type' => 'payment',
                 'description' => 'Payment for invoice #' . $payment->id,
-            ]);*/
+            ]);
     
-            // تحويل إلى محفظة النظام
-           /* $systemWallet->amount += $payment->amount;
+            // إضافة للمحفظة النظامية
+            $systemWallet->amount += $payment->amount;
             $systemWallet->save();
     
             $systemWallet->transactions()->create([
                 'amount' => $payment->amount,
                 'type' => 'income',
-                'description' => 'Received from patient ID ' . $patient->id,
-            ]);*/
+                'description' => 'Received from patient ID ' . $patient->id . ', Name: ' . $user->first_name .''. $user->last_name,
+            ]);
     
             // تحديث حالة الدفع
             $payment->update([
-                'payment_type' => 'wallet', // Add quotes around 'wallet'
+                'payment_type' => 'wallet',
                 'payment_date' => now(),
                 'description' => 'Paid via wallet',
                 'status' => 'paid',
-            ]);;
+            ]);
     
             DB::commit();
     
-            return response()->json(['message' => 'Payment successful using wallet', 'payment' => $payment]);
+            // جلب بيانات الموعد المرتبط بالدفع
+            $appointment = $payment->appointment()->with(['doctor', 'patient'])->first();
+    
+            return response()->json([
+                'message' => 'Payment successful using wallet',
+                'payment' => $payment,
+                'appointment' => $appointment,
+            ]);
     
         } catch (\Exception $e) {
             DB::rollback();

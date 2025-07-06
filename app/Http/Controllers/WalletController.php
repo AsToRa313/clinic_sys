@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Wallet;
 use App\Models\Patient;
 use Illuminate\Http\Request;
@@ -34,6 +34,11 @@ class WalletController extends Controller
 
         $wallet->amount += $request->amount;
         $wallet->save();
+        $wallet->transactions()->create([
+                'amount' => $request->amount,
+                'type' => 'income',
+                'description' => 'income from system #'
+            ]);
 
         return response()->json(['message' => 'Wallet recharged successfully', 'wallet' => $wallet]);
     }
@@ -49,6 +54,11 @@ class WalletController extends Controller
 
         $wallet->amount = 0;
         $wallet->save();
+        $wallet->transactions()->create([
+                'amount' => '0',
+                'type' => 'adjustment',
+                'description' => 'adjustment from system #'
+            ]);
 
         return response()->json(['message' => 'Wallet emptied successfully', 'wallet' => $wallet]);
     }
@@ -64,6 +74,74 @@ public function showSystemWallet()
 
     return response()->json(['system_wallet_balance' => $wallet->amount]);
 }
+public function systemWalletTransactions()
+{
+    // جلب محفظة النظام
+    $systemWallet = Wallet::where('is_system', true)->first();
+
+    if (!$systemWallet) {
+        return response()->json(['error' => 'System wallet not found'], 404);
+    }
+
+    // جلب المعاملات المرتبطة
+    $transactions = $systemWallet->transactions()->latest()->get()->map(function ($t) {
+        return [
+            'amount' => $t->amount,
+            'type' => $t->type,
+            'description' => $t->description,
+            'date' => $t->created_at->format('Y-m-d H:i'),
+        ];
+    });
+
+    return response()->json([
+        'wallet_balance' => $systemWallet->amount,
+        'transactions' => $transactions,
+    ]);
+}
+
+
+
+
+
+
+public function transactions()
+{
+    // هنا نجيب المريض بناءً على المستخدم الحالي (مسجل الدخول)
+    $user = Auth::user();
+
+    if (!$user) {
+        return response()->json(['error' => 'Unauthorized'], 401);
+    }
+
+    $patient = $user->patient;
+
+    if (!$patient) {
+        return response()->json(['error' => 'Patient not found'], 404);
+    }
+    $user = Auth::user();
+    $patientId = $user->patient->id;
+    
+    $wallet = $patient->wallet;
+
+    if (!$wallet) {
+        return response()->json(['error' => 'Wallet not found'], 404);
+    }
+
+    $transactions = $wallet->transactions()->latest()->get()->map(function ($t) {
+        return [
+            'amount' => $t->amount,
+            'type' => $t->type,
+            'description' => $t->description,
+            'date' => $t->created_at->format('Y-m-d H:i'),
+        ];
+    });
+
+    return response()->json([
+        'wallet_balance' => $wallet->amount,
+        'transactions' => $transactions,
+    ]);
+}
+
 
 
 }

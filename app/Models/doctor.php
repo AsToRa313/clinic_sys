@@ -35,4 +35,16 @@ public function appointment ()
     {
         return $this->hasMany(Appointment::class);
     }
+    public function ratings ()
+    {
+        return $this->hasMany(Rating::class);
+    }
+    public function getAverageRatingAttribute(): float
+    {
+        return round($this->ratings()->avg('rating') ?? 0, 1);
+    }
+    public function doctorNotes()
+{
+    return $this->hasMany(DoctorNote::class);
+}
 }

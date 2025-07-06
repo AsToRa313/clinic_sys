@@ -1,23 +1,18 @@
 <?php
 
-// app/Models/Appointment.php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Appointment extends Model
+class Rating extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
         'doctor_id',
         'patient_id',
-        'scheduled_date',
-        'start_time',
-        'status',
-    ];
+        'rating',
+        'comment'
+        ];
 
     public function doctor()
     {
@@ -28,12 +23,6 @@ class Appointment extends Model
     {
         return $this->belongsTo(Patient::class);
     }
-    public function payment ()
-    {
-        return $this->hasMany(Payment::class);
-    }
-    public function doctorNote()
-{
-    return $this->hasOne(DoctorNote::class);
+
 }
-}
+

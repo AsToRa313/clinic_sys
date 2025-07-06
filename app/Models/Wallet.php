@@ -17,4 +17,11 @@ class Wallet extends Model
     {
         return $query->where('is_system', true);
     }
+    // app/Models/Wallet.php
+
+public function transactions()
+{
+    return $this->hasMany(WalletTransaction::class);
+}
+
 }

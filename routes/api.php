@@ -6,6 +6,10 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\Doctor\ScheduleController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\WalletController;
+use App\Http\Controllers\DoctorNoteController;
+
+use App\Http\Controllers\RatingController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -51,11 +55,18 @@ Route::middleware(['auth:sanctum', 'can:is-doctor'])->prefix('doctor')->group(fu
     Route::post('/doctor/today/{doctorId}', [AppointmentController::class, 'doctorAppointmentsToday']);
 });
 // admin api
-Route::middleware(['auth:sanctum', 'can:is-admin'])->group(function () {
-    
+Route::middleware(['auth:sanctum', 'can:is-admin'])-> prefix('admin')->group(function () {
+    //wallets
+    Route::post('wallet/recharge/{patientId}', [WalletController::class, 'recharge']);
+    Route::post('wallet/empty/{patientId}', [WalletController::class, 'empty']);
+    Route::get('/{patientId}', [WalletController::class, 'show']); 
+    Route::get('/sys/wallet', [WalletController::class, 'showSystemWallet']); 
+    Route::get('/wallet/transactions', [WalletController::class, 'systemWalletTransactions']);
+//clinics
     Route::post('/create-clinic', [ClinicController::class, 'store']);
     Route::post('clinics/{id}', [ClinicController::class, 'update']);
     Route::delete('clinics/{id}', [ClinicController::class, 'destroy']);
+    //users
     Route::post('/addUser', [UserController::class, 'adminAddUser']);
     Route::post('/deleteUser/{id}', [UserController::class, 'destroy']);
 });
@@ -82,10 +93,12 @@ Route::middleware(['auth:sanctum', 'is-receptionist'])-> prefix('receptionist')-
     Route::get('/all', [AppointmentController::class, 'index']);
     Route::get('/all/today', [AppointmentController::class, 'indexAppointmentsToday']);
     Route::get('/available/{doctorId}/{date}', [AppointmentController::class, 'availableSlots']);
+    
 
 
 });
-Route::middleware(['auth:sanctum', 'is-patient'])-> prefix('patient ')->group(function(){
+Route::middleware(['auth:sanctum', 'is-patient'])-> prefix('patient')->group(function(){
+    Route::get('wallet/{patientId}', [WalletController::class, 'show']);
     Route::post('/book', [AppointmentController::class, 'create']);
     Route::put('/cancel/{id}', [AppointmentController::class, 'cancel']);
     Route::get('/available/{doctorId}/{date}', [AppointmentController::class, 'availableSlots']);
@@ -93,7 +106,7 @@ Route::middleware(['auth:sanctum', 'is-patient'])-> prefix('patient ')->group(fu
     Route::put('/update/{id}', [AppointmentController::class, 'update']);
     Route::get('/appointment/{id}', [AppointmentController::class, 'show']);
     Route::get('/appointments/{id}', [AppointmentController::class, 'patientAppointments']);
-
+    Route::get('/wallet/transactions/{id}', [WalletController::class, 'transactions']);
 
 
 });
@@ -108,10 +121,29 @@ Route::prefix('payments')->group(function () {
 
 
 });
-// wallet basic
 
-Route::prefix('wallet')->group(function () {
-    Route::get('/{patientId}', [WalletController::class, 'show']);          // عرض الرصيد
-    Route::post('/recharge/{patientId}', [WalletController::class, 'recharge']);  // تعبئة المحفظة
-    Route::post('/empty/{patientId}', [WalletController::class, 'empty']);      // إفراغ المحفظة
+//ratings
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/ratings', [RatingController::class, 'store']);
+    Route::get('/ratings/{doctorId}', [RatingController::class, 'index']);
+    Route::get('/avg-ratings/{doctorId}', [RatingController::class, 'showAvg']);
 });
+
+///////// مو جاهز لسا بدو تنضيف اكتر وترتيب
+Route::middleware('auth:sanctum')->group(function () {
+    // Doctor notes by appointment
+    Route::get('/appointments/{appointment}/notes', [DoctorNoteController::class, 'index']);
+    Route::post('/appointments/{appointment}/notes', [DoctorNoteController::class, 'store']);
+    
+    // Individual note operations
+    Route::get('/notes/{doctorNote}', [DoctorNoteController::class, 'show']);
+    Route::put('/notes/{doctorNote}', [DoctorNoteController::class, 'update']);
+    Route::delete('/notes/{doctorNote}', [DoctorNoteController::class, 'destroy']);
+    
+    // Additional routes
+    Route::get('/patients/{patientId}/notes', [DoctorNoteController::class, 'patientNotes']);
+    Route::get('/doctors/{doctorId}/notes', [DoctorNoteController::class, 'doctorNotes']);
+});
+
+///////// مو جاهز لسا بدو تنضيف اكتر وترتيب لا حدا يربط منو الا اذا فاهم شو الشغل
+//اربطوا بس لي محطوط بقلب الgates

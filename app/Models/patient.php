@@ -29,6 +29,14 @@ class Patient extends Model
 {
     return $this->hasOne(Wallet::class);
 }
+public function rating()
+{
+    return $this->hasMany(Rating::class);
+}
+public function doctorNotes()
+{
+    return $this->hasMany(DoctorNote::class);
+}
 
 }
 
