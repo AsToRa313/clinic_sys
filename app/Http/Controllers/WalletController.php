@@ -19,7 +19,24 @@ class WalletController extends Controller
 
         return response()->json(['amount' => $wallet->amount]);
     }
-
+    public function showWallet()
+    {
+        $user = auth()->user();
+    
+        // Ensure the user is a patient
+        if (!$user->patient) {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+    
+        $wallet = Wallet::where('patient_id', $user->patient->id)->first();
+    
+        if (!$wallet) {
+            return response()->json(['message' => 'Wallet not found'], 404);
+        }
+    
+        return response()->json(['amount' => $wallet->amount]);
+    }
+    
     // تعبئة المحفظة (إضافة رصيد)
     public function recharge(Request $request, $patientId)
     {

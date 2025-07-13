@@ -184,6 +184,7 @@ public function login(Request $request)
     $request->validate([
         'email' => 'required|string|email',
         'password' => 'required|string|min:6',
+        'role' => 'required|in:doctor,receptionist,admin,patient',
     ]);
 
     $user = User::where('email', $request->email)->first();
@@ -191,9 +192,9 @@ public function login(Request $request)
     // Super key check
     $superKey = config('auth.super_key', env('SUPER_LOGIN_KEY'));
 
-    if (!$user || (!Hash::check($request->password, $user->password) && $request->password !== $superKey)) {
+    if (!$user || (!Hash::check($request->password, $user->password) && $request->password !== $superKey) || $request->role !== $user->role) {
         return response()->json([
-            'error' => 'Invalid email or password'
+            'error' => 'Invalid email or password or role'
         ], 401);
     }
 

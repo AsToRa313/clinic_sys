@@ -27,123 +27,99 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('/login', [UserController::class, 'login']);
-Route::post('/register', [UserController::class, 'register']);
+Route::post('/login', [UserController::class, 'login']); // تسجيل الدخول
+Route::post('/register', [UserController::class, 'register']);//انشاء مستخدم
 
 Route::middleware('auth:sanctum')->group(function(){
-    Route::post('/profile', [UserController::class, 'update']);
-    Route::post('/logout', [UserController::class, 'logout']);
+    Route::get('/available/{doctorId}/{date}', [AppointmentController::class, 'availableSlots']);//المواعيد الموجودة
+    Route::post('/profile', [UserController::class, 'update']);//تعديل البروفايل
+    Route::post('/logout', [UserController::class, 'logout']);//تسجيل الخروج
+    Route::get('clinics', [ClinicController::class, 'index']);//عرض العيادات list of 
+    Route::get('clinics/doctors/{id}', [ClinicController::class, 'show']);// عرض عيادة بدكاترتها
+    Route::get('/doctors/{id}/schedules', [ScheduleController::class, 'show']);//عرض جدول دوام الدكتور
+    Route::get('/ratings/{doctorId}', [RatingController::class, 'index']);//تقييمات الدكتور
+    Route::get('/ratings/avg/{doctorId}', [RatingController::class, 'showAvg']);//ظظمتوسط تقييمات الدكتوريض
 
 });
 
-Route::get('clinics', [ClinicController::class, 'index']);
-Route::get('clinics/{id}', [ClinicController::class, 'show']);
 
-Route::get('/doctors/{id}/schedules', [ScheduleController::class, 'show']);
-
-Route::get('/patient/{patientId}', [AppointmentController::class, 'patientAppointments']);
 
 
 
 //doctor api
 Route::middleware(['auth:sanctum', 'can:is-doctor'])->prefix('doctor')->group(function () {
-    Route::get('schedules', [ScheduleController::class, 'index']);
-    Route::post('schedules', [ScheduleController::class, 'store']);
-    Route::delete('schedules/{id}', [ScheduleController::class, 'destroy']);
-    Route::get('/doctor/{doctorId}', [AppointmentController::class, 'doctorAppointments']);
-    Route::post('/doctor/{doctorId}/by-date', [AppointmentController::class, 'doctorAppointmentsByDate']);
-    Route::post('/doctor/today/{doctorId}', [AppointmentController::class, 'doctorAppointmentsToday']);
+    Route::get('schedules', [ScheduleController::class, 'index']);//عرض الجداول الخاصة بالطبيب نفسه
+    Route::post('schedules', [ScheduleController::class, 'store']);//ادخال جدوا عمل خاص بالطبيب
+    Route::delete('schedules/{id}', [ScheduleController::class, 'destroy']);//حذف جدول دوام خاص الطبيب
+    Route::get('/appointments/{doctorId}', [AppointmentController::class, 'doctorAppointments']);//رؤية مواعيد الدكتور كافة
+    Route::post('/appointments/{doctorId}/by-date', [AppointmentController::class, 'doctorAppointmentsByDate']);//عرض جدول المواعيد حسب يوم محدد
+    Route::post('/appointments/today/{doctorId}', [AppointmentController::class, 'doctorAppointmentsToday']);//ظظعرض جدوا مواعيد اليوم
+    Route::get('/appointments/{appointment}/notes', [DoctorNoteController::class, 'index']);//رؤية الملاحظات التي وضعها الطبيب لموعد محدد
+    Route::post('/appointments/{appointment}/notes/store', [DoctorNoteController::class, 'store']);//تسجيل ملاحظة للمريض
+    Route::put('/notes/{doctorNote}', [DoctorNoteController::class, 'update']);//التعديل على ملاحظة
+    Route::delete('/notes/{doctorNote}', [DoctorNoteController::class, 'destroy']);//حذف ملاحظة
 });
 // admin api
 Route::middleware(['auth:sanctum', 'can:is-admin'])-> prefix('admin')->group(function () {
     //wallets
-    Route::post('wallet/recharge/{patientId}', [WalletController::class, 'recharge']);
-    Route::post('wallet/empty/{patientId}', [WalletController::class, 'empty']);
-    Route::get('/{patientId}', [WalletController::class, 'show']); 
-    Route::get('/sys/wallet', [WalletController::class, 'showSystemWallet']); 
-    Route::get('/wallet/transactions', [WalletController::class, 'systemWalletTransactions']);
+    Route::post('wallet/recharge/{patientId}', [WalletController::class, 'recharge']);//شحن محفظة لمريض
+    Route::post('wallet/empty/{patientId}', [WalletController::class, 'empty']);//افراغ محفظة مريض
+    Route::get('wallet/{patientId}', [WalletController::class, 'show']);//عرض محفظة مريض 
+    Route::get('wallet/system/show', [WalletController::class, 'showSystemWallet']);//عرض محفظة النظام
+    Route::get('/wallet/system/transactions', [WalletController::class, 'systemWalletTransactions']);//عرض حركة المحفظة
 //clinics
-    Route::post('/create-clinic', [ClinicController::class, 'store']);
-    Route::post('clinics/{id}', [ClinicController::class, 'update']);
-    Route::delete('clinics/{id}', [ClinicController::class, 'destroy']);
+    Route::post('/create-clinic', [ClinicController::class, 'store']);//انشاء عيادة 
+    Route::post('clinics/update/{id}', [ClinicController::class, 'update']);//update
+    Route::delete('clinics/delete/{id}', [ClinicController::class, 'destroy']);//حذف عيادة 
     //users
-    Route::post('/addUser', [UserController::class, 'adminAddUser']);
-    Route::post('/deleteUser/{id}', [UserController::class, 'destroy']);
-});
-
-Route::prefix('appointments')->group(function () {
-    Route::get('/available/{doctorId}/{date}', [AppointmentController::class, 'availableSlots']);
-    Route::post('/book', [AppointmentController::class, 'create']);
-    Route::put('/cancel/{id}', [AppointmentController::class, 'cancel']);
-    Route::put('/status/{id}', [AppointmentController::class, 'updateStatus']);
-    Route::put('/update/{id}', [AppointmentController::class, 'update']);
-
-    Route::get('/appointment/{id}', [AppointmentController::class, 'show']);
-
+    Route::post('/addUser', [UserController::class, 'adminAddUser']);//اضافة يوزر
+    Route::delete('/deleteUser/{id}', [UserController::class, 'destroy']);//حذف يوزر
+     Route::get('/doctors/{doctorId}/notes', [DoctorNoteController::class, 'doctorNotes']);//رؤية كل المحلاظات التي وضعها الطبيب
+     Route::get('/patients/{patientId}/notes', [DoctorNoteController::class, 'patientNotes']);//رؤية كل الملاحظات التي وضعت للمريض
 
 });
+
+
 ///receptionist api
 Route::middleware(['auth:sanctum', 'is-receptionist'])-> prefix('receptionist')->group(function(){
-    Route::post('/book', [AppointmentController::class, 'create']);
-    Route::put('/cancel/{id}', [AppointmentController::class, 'cancel']);
-    Route::put('/status/{id}', [AppointmentController::class, 'updateStatus']);
-    Route::put('/update/{id}', [AppointmentController::class, 'update']);
-    Route::get('/appointment/{id}', [AppointmentController::class, 'show']);
-    Route::POST('/all/{date}', [AppointmentController::class, 'indexPerDay']);
-    Route::get('/all', [AppointmentController::class, 'index']);
-    Route::get('/all/today', [AppointmentController::class, 'indexAppointmentsToday']);
-    Route::get('/available/{doctorId}/{date}', [AppointmentController::class, 'availableSlots']);
-    
+    Route::post('/book', [AppointmentController::class, 'create']);//انشاء موعد
+    Route::put('/cancel/{id}', [AppointmentController::class, 'cancel']);//الغاء موعد
+    Route::put('/status/{id}', [AppointmentController::class, 'updateStatus']);//تعديل حالة الموعد
+    Route::put('/update/{id}', [AppointmentController::class, 'update']);//تعديل الموعد
+    Route::get('/appointment/{id}', [AppointmentController::class, 'show']);//اظهار موعد
+    Route::POST('appointment/get/all/{date}', [AppointmentController::class, 'indexPerDay']);//اظهار المواعيد الخاصة بيوم محدد
+    Route::get('appointment/get/all', [AppointmentController::class, 'index']);//احضار كل المواعيد
+    Route::get('appointment/get/all/today', [AppointmentController::class, 'indexAppointmentsToday']);//ظظاحضار المواعيد الخاصة باليوم
+    Route::get('appointment/available/{doctorId}/{date}', [AppointmentController::class, 'availableSlots']);//احضار جدول دوام دكتور معين
+    Route::get('payments/get/all', [PaymentController::class, 'index']);//احضار المدفوعات
+    Route::get('payments/{id}', [PaymentController::class, 'show']);//تفاصيل فاتورة
+    Route::get('/appointments/get/patient/{id}', [AppointmentController::class, 'patientAppointments']);//احضار المواعيد الخاصة بمريض
+    Route::delete('payments/destroy/{id}', [PaymentController::class, 'destroy']);//حذف فاتورة
 
 
 });
 Route::middleware(['auth:sanctum', 'is-patient'])-> prefix('patient')->group(function(){
-    Route::get('wallet/{patientId}', [WalletController::class, 'show']);
-    Route::post('/book', [AppointmentController::class, 'create']);
-    Route::put('/cancel/{id}', [AppointmentController::class, 'cancel']);
-    Route::get('/available/{doctorId}/{date}', [AppointmentController::class, 'availableSlots']);
-    Route::put('/status/{id}', [AppointmentController::class, 'updateStatus']);
-    Route::put('/update/{id}', [AppointmentController::class, 'update']);
-    Route::get('/appointment/{id}', [AppointmentController::class, 'show']);
-    Route::get('/appointments/{id}', [AppointmentController::class, 'patientAppointments']);
+    Route::get('wallet', [WalletController::class, 'showWallet']);//الطلاع على المحفظة
+    Route::post('/book', [AppointmentController::class, 'createPatient']);//انشاء موعد
+    Route::put('/cancel/{id}', [AppointmentController::class, 'cancel']);//الغاء موعد
+    Route::put('/status/{id}', [AppointmentController::class, 'updateStatusByPatient']);//تعديل حالة موعد خاص بالمريض
+    Route::put('/update/{id}', [AppointmentController::class, 'updateFromPatient']);//تعديل على الموعد من قبل المريض
+    Route::get('/appointment/{id}', [AppointmentController::class, 'showPatient']);//عرض الموعد
+    Route::get('/appointments/get', [AppointmentController::class, 'patientAppointmentsBy']);//رؤية المواعيد الخاصة بالمريض
     Route::get('/wallet/transactions/{id}', [WalletController::class, 'transactions']);
+    Route::get('payment/{id}', [PaymentController::class, 'showPatient']);//اظهار تفاصيل البايمنت
+    Route::get('payments/get/all', [PaymentController::class, 'indexOwnPayments']);//احضار المدفوعات الخاصة بالمريض
+    Route::post('payments/pay/{id}', [PaymentController::class, 'payFromWallet']);//دفع الفاتورة
+    Route::get('/appointments/{appointment}/notes', [DoctorNoteController::class, 'index']);//رؤية كل الملاحظات التي وضعها الدكتور الخاصة بموعد
+    Route::post('/ratings', [RatingController::class, 'store']);//تقييم دكتور
+    Route::get('/notes/{doctorNote}', [DoctorNoteController::class, 'show']);//رؤية تفاصيل ملاحظة
 
-
-});
-
-Route::prefix('payments')->group(function () {
-    Route::get('/', [PaymentController::class, 'index']);
-    Route::get('/{id}', [PaymentController::class, 'show']);
-    Route::post('/', [PaymentController::class, 'store']);
-    Route::put('/{id}', [PaymentController::class, 'update']);
-    Route::delete('/{id}', [PaymentController::class, 'destroy']);
-    Route::post('/pay/{id}', [PaymentController::class, 'payFromWallet']);
-
-
-});
-
-//ratings
-Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/ratings', [RatingController::class, 'store']);
-    Route::get('/ratings/{doctorId}', [RatingController::class, 'index']);
-    Route::get('/avg-ratings/{doctorId}', [RatingController::class, 'showAvg']);
-});
-
-///////// مو جاهز لسا بدو تنضيف اكتر وترتيب
-Route::middleware('auth:sanctum')->group(function () {
-    // Doctor notes by appointment
-    Route::get('/appointments/{appointment}/notes', [DoctorNoteController::class, 'index']);
-    Route::post('/appointments/{appointment}/notes', [DoctorNoteController::class, 'store']);
     
-    // Individual note operations
-    Route::get('/notes/{doctorNote}', [DoctorNoteController::class, 'show']);
-    Route::put('/notes/{doctorNote}', [DoctorNoteController::class, 'update']);
-    Route::delete('/notes/{doctorNote}', [DoctorNoteController::class, 'destroy']);
-    
-    // Additional routes
-    Route::get('/patients/{patientId}/notes', [DoctorNoteController::class, 'patientNotes']);
-    Route::get('/doctors/{doctorId}/notes', [DoctorNoteController::class, 'doctorNotes']);
+
+
 });
+
 
 ///////// مو جاهز لسا بدو تنضيف اكتر وترتيب لا حدا يربط منو الا اذا فاهم شو الشغل
-//اربطوا بس لي محطوط بقلب الgates
+//اربطوا بس لي محطوط بقلب الgates<?php
+

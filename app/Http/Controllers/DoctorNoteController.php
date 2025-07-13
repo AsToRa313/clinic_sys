@@ -27,9 +27,7 @@ class DoctorNoteController extends Controller
             return response()->json(['message' => 'Unauthorized'], 403);
         }
 
-        $notes = $appointment->doctorNote()
-            ->with(['doctor.user', 'patient.user'])
-            ->get();
+        $notes = $appointment->doctorNote() ->get();
 
         return response()->json($notes);
     }
@@ -127,7 +125,7 @@ class DoctorNoteController extends Controller
 
         $doctorNote->delete();
 
-        return response()->json(null, Response::HTTP_NO_CONTENT);
+        return response()->json('deleted ');
     }
 
     /**

@@ -1,0 +1,4064 @@
+{
+	"info": {
+		"_postman_id": "cef7908c-2ede-4207-b771-17ce4125a5cd",
+		"name": "CureTrack",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39659830"
+	},
+	"item": [
+		{
+			"name": "clinic",
+			"item": [
+				{
+					"name": "http://127.0.0.1:8000/api/clinics",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "33|eKykgu89AfxMox6jjnS6S0U36vHEm1MLtbDRfE0j19204616",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "email",
+								"value": "ramanasr8@gmail.com",
+								"type": "default"
+							},
+							{
+								"key": "password",
+								"value": "reda00kasem",
+								"type": "default"
+							},
+							{
+								"key": "phone",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "location",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "password",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "wael",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "last_name",
+									"value": "header",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "waelaref8@gmail.com",
+									"type": "default"
+								},
+								{
+									"key": "phone",
+									"value": "09517297854",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "location",
+									"value": "damascus",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "patient",
+									"type": "default"
+								},
+								{
+									"key": "gender",
+									"value": "male",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "Reda00kasem",
+									"type": "default"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								},
+								{
+									"key": "clinic_id",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "bio",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "blood_type",
+									"value": "A+",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clinics/doctors/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clinics",
+								"doctors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/clinics/doctors/{id}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "33|eKykgu89AfxMox6jjnS6S0U36vHEm1MLtbDRfE0j19204616",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "email",
+								"value": "ramanasr8@gmail.com",
+								"type": "default"
+							},
+							{
+								"key": "password",
+								"value": "reda00kasem",
+								"type": "default"
+							},
+							{
+								"key": "phone",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "location",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "password",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "wael",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "last_name",
+									"value": "header",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "waelaref8@gmail.com",
+									"type": "default"
+								},
+								{
+									"key": "phone",
+									"value": "09517297854",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "location",
+									"value": "damascus",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "patient",
+									"type": "default"
+								},
+								{
+									"key": "gender",
+									"value": "male",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "Reda00kasem",
+									"type": "default"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								},
+								{
+									"key": "clinic_id",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "bio",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "blood_type",
+									"value": "A+",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clinics/doctors/{id}",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clinics",
+								"doctors",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/doctors/{id}/schedules",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "33|eKykgu89AfxMox6jjnS6S0U36vHEm1MLtbDRfE0j19204616",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "email",
+								"value": "ramanasr8@gmail.com",
+								"type": "default"
+							},
+							{
+								"key": "password",
+								"value": "reda00kasem",
+								"type": "default"
+							},
+							{
+								"key": "phone",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "location",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "password",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "wael",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "last_name",
+									"value": "header",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "waelaref8@gmail.com",
+									"type": "default"
+								},
+								{
+									"key": "phone",
+									"value": "09517297854",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "location",
+									"value": "damascus",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "patient",
+									"type": "default"
+								},
+								{
+									"key": "gender",
+									"value": "male",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "Reda00kasem",
+									"type": "default"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								},
+								{
+									"key": "clinic_id",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "bio",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "blood_type",
+									"value": "A+",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/doctors/1/schedules",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"doctors",
+								"1",
+								"schedules"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "doctor",
+			"item": [
+				{
+					"name": "http://127.0.0.1:8000/api/doctor/schedules",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "34|N1rnhVGyQCXpRDHqHpDpCV550VgZZPiVqXLhQispffde349c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/doctor/schedules",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"doctor",
+								"schedules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/doctor/schedules",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "34|N1rnhVGyQCXpRDHqHpDpCV550VgZZPiVqXLhQispffde349c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"day_of_week\":\"friday\",\r\n    \"start_time\":\"10:00\",\r\n    \"end_time\":\"12:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/doctor/schedules",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"doctor",
+								"schedules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/doctor/schedules/{id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "34|N1rnhVGyQCXpRDHqHpDpCV550VgZZPiVqXLhQispffde349c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/doctor/schedules/7",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"doctor",
+								"schedules",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/doctor/appointments/{doctor_id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "34|N1rnhVGyQCXpRDHqHpDpCV550VgZZPiVqXLhQispffde349c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/doctor/appointments/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"doctor",
+								"appointments",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/doctor/appointments/{doctor_id}/by-date",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "34|N1rnhVGyQCXpRDHqHpDpCV550VgZZPiVqXLhQispffde349c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"date\":\"2025/07/07\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/doctor/appointments/1/by-date",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"doctor",
+								"appointments",
+								"1",
+								"by-date"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/doctor/appointments/today/{doctor_id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "34|N1rnhVGyQCXpRDHqHpDpCV550VgZZPiVqXLhQispffde349c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/doctor/appointments/today/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"doctor",
+								"appointments",
+								"today",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/doctor/appointments/3/notes/store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "45|Dd7q8bQmOq2CtKY9QYhOV3dwyajiTR2m5Dkm5LdK05c0ae3d",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "email",
+								"value": "ramanasr8@gmail.com",
+								"type": "default"
+							},
+							{
+								"key": "password",
+								"value": "reda00kasem",
+								"type": "default"
+							},
+							{
+								"key": "phone",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "location",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "password",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"notes\": \"reda thinks significant improvement in gum health. No signs of infection.\",\r\n        \"prescription\": \"ohh with prescribed mouthwash twice daily for 1 more week\",\r\n        \"is_private\": \"0\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/doctor/appointments/3/notes/store",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"doctor",
+								"appointments",
+								"3",
+								"notes",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/doctor/notes/{note_id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "45|Dd7q8bQmOq2CtKY9QYhOV3dwyajiTR2m5Dkm5LdK05c0ae3d",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "email",
+								"value": "ramanasr8@gmail.com",
+								"type": "default"
+							},
+							{
+								"key": "password",
+								"value": "reda00kasem",
+								"type": "default"
+							},
+							{
+								"key": "phone",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "location",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "password",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"notes\": \"reda thinks significant improvement in gum health. No signs of infection.\",\r\n        \"prescription\": \"shit with prescribed mouthwash twice daily for 1 more week\",\r\n        \"is_private\": \"0\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/doctor/notes/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"doctor",
+								"notes",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/doctor/notes/{note_id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "45|Dd7q8bQmOq2CtKY9QYhOV3dwyajiTR2m5Dkm5LdK05c0ae3d",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "email",
+								"value": "ramanasr8@gmail.com",
+								"type": "default"
+							},
+							{
+								"key": "password",
+								"value": "reda00kasem",
+								"type": "default"
+							},
+							{
+								"key": "phone",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "location",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "password",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"notes\": \"reda thinks significant improvement in gum health. No signs of infection.\",\r\n        \"prescription\": \"shit with prescribed mouthwash twice daily for 1 more week\",\r\n        \"is_private\": \"0\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/doctor/notes/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"doctor",
+								"notes",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "http://127.0.0.1:8000/api/admin/wallet/recharge/4",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "35|Mj7274gk80rxa3Yq15bGQjoPwaBxq3RYMD4h5llqd2ea295c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "fisrt_name",
+								"value": "",
+								"type": "default"
+							},
+							{
+								"key": "last_name",
+								"value": "",
+								"type": "default"
+							},
+							{
+								"key": "phone",
+								"value": "",
+								"type": "default"
+							},
+							{
+								"key": "location",
+								"value": "",
+								"type": "default"
+							},
+							{
+								"key": "password",
+								"value": "",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\":\"100\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/wallet/recharge/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"wallet",
+								"recharge",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/admin/wallet/empty/{patient_id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "35|Mj7274gk80rxa3Yq15bGQjoPwaBxq3RYMD4h5llqd2ea295c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/wallet/empty/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"wallet",
+								"empty",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/admin/wallet/{patient_id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "35|Mj7274gk80rxa3Yq15bGQjoPwaBxq3RYMD4h5llqd2ea295c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/wallet/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"wallet",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/admin/wallet/system/show",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "35|Mj7274gk80rxa3Yq15bGQjoPwaBxq3RYMD4h5llqd2ea295c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/wallet/system/show",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"wallet",
+								"system",
+								"show"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/admin/wallet/system/transactions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "35|Mj7274gk80rxa3Yq15bGQjoPwaBxq3RYMD4h5llqd2ea295c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/wallet/system/transactions",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"wallet",
+								"system",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/admin/create-clinic",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "35|Mj7274gk80rxa3Yq15bGQjoPwaBxq3RYMD4h5llqd2ea295c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "clinic",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "09876543211",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "description",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/create-clinic",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"create-clinic"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/admin/clinics/update/{clinic_id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "35|Mj7274gk80rxa3Yq15bGQjoPwaBxq3RYMD4h5llqd2ea295c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "clinic ss",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "09876543211",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "description",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/clinics/update/7",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"clinics",
+								"update",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/admin/clinics/delete/{clinic_id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "35|Mj7274gk80rxa3Yq15bGQjoPwaBxq3RYMD4h5llqd2ea295c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/clinics/delete/7",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"clinics",
+								"delete",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/admin/addUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "35|Mj7274gk80rxa3Yq15bGQjoPwaBxq3RYMD4h5llqd2ea295c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "fadi",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "fadi",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "0932165487",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "fadifadi8@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "reda00kasem",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "male",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "role",
+									"value": "doctor",
+									"type": "text"
+								},
+								{
+									"key": "bio",
+									"value": "redaaaas",
+									"type": "text"
+								},
+								{
+									"key": "clinic_id",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/addUser",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"addUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/admin/deleteUser/{user_id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "35|Mj7274gk80rxa3Yq15bGQjoPwaBxq3RYMD4h5llqd2ea295c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/deleteUser/12",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"deleteUser",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/admin/doctors/{doctor_id}/notes",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "46|jgMrs1nvT2ousju6GU2AeRW41Br7ImjmMIWXF2phb4b26742",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "email",
+								"value": "ramanasr8@gmail.com",
+								"type": "default"
+							},
+							{
+								"key": "password",
+								"value": "reda00kasem",
+								"type": "default"
+							},
+							{
+								"key": "phone",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "location",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "password",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "wael",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "last_name",
+									"value": "header",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "redaaref8@gmail.com",
+									"type": "default"
+								},
+								{
+									"key": "phone",
+									"value": "09517297854",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "location",
+									"value": "damascus",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "admin",
+									"type": "default"
+								},
+								{
+									"key": "gender",
+									"value": "male",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "REDA00KASEM",
+									"type": "default"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								},
+								{
+									"key": "clinic_id",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "bio",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "blood_type",
+									"value": "A+",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/doctors/1/notes",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"doctors",
+								"1",
+								"notes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/admin/patients/{patient_id}/notes",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "46|jgMrs1nvT2ousju6GU2AeRW41Br7ImjmMIWXF2phb4b26742",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "email",
+								"value": "ramanasr8@gmail.com",
+								"type": "default"
+							},
+							{
+								"key": "password",
+								"value": "reda00kasem",
+								"type": "default"
+							},
+							{
+								"key": "phone",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "location",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "password",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "wael",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "last_name",
+									"value": "header",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "redaaref8@gmail.com",
+									"type": "default"
+								},
+								{
+									"key": "phone",
+									"value": "09517297854",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "location",
+									"value": "damascus",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "admin",
+									"type": "default"
+								},
+								{
+									"key": "gender",
+									"value": "male",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "REDA00KASEM",
+									"type": "default"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								},
+								{
+									"key": "clinic_id",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "bio",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "blood_type",
+									"value": "A+",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/patients/2/notes",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"patients",
+								"2",
+								"notes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "patient",
+			"item": [
+				{
+					"name": "http://127.0.0.1:8000/api/patient/payments/get/all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "42|kvvqT6eKLqlnmaFyoqTDAfR4HZccOQWNQczdLBgle95db179",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "email",
+								"value": "ramanasr8@gmail.com",
+								"type": "default"
+							},
+							{
+								"key": "password",
+								"value": "reda00kasem",
+								"type": "default"
+							},
+							{
+								"key": "phone",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "location",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "password",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "wael",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "last_name",
+									"value": "header",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "ramanasr8@gmail.com",
+									"type": "default"
+								},
+								{
+									"key": "phone",
+									"value": "0951729785",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "location",
+									"value": "damascus",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "patient",
+									"type": "default"
+								},
+								{
+									"key": "gender",
+									"value": "male",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "REDA00KASEM",
+									"type": "default"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								},
+								{
+									"key": "clinic_id",
+									"value": "1",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "bio",
+									"value": "دكتور حمار",
+									"type": "default",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/patient/payments/get/all",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"patient",
+								"payments",
+								"get",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/patient/wallet",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "42|kvvqT6eKLqlnmaFyoqTDAfR4HZccOQWNQczdLBgle95db179",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "email",
+								"value": "ramanasr8@gmail.com",
+								"type": "default"
+							},
+							{
+								"key": "password",
+								"value": "reda00kasem",
+								"type": "default"
+							},
+							{
+								"key": "phone",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "location",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "password",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "wael",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "last_name",
+									"value": "header",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "ramanasr8@gmail.com",
+									"type": "default"
+								},
+								{
+									"key": "phone",
+									"value": "0951729785",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "location",
+									"value": "damascus",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "patient",
+									"type": "default"
+								},
+								{
+									"key": "gender",
+									"value": "male",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "REDA00KASEM",
+									"type": "default"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								},
+								{
+									"key": "clinic_id",
+									"value": "1",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "bio",
+									"value": "دكتور حمار",
+									"type": "default",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/patient/wallet",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"patient",
+								"wallet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/patient/book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "42|kvvqT6eKLqlnmaFyoqTDAfR4HZccOQWNQczdLBgle95db179",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "email",
+								"value": "ramanasr8@gmail.com",
+								"type": "default"
+							},
+							{
+								"key": "password",
+								"value": "reda00kasem",
+								"type": "default"
+							},
+							{
+								"key": "phone",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "location",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "password",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"doctor_id\": 1,\r\n \r\n  \"scheduled_date\": \"2025-07-07\",\r\n  \"start_time\": \"12:30:00\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/patient/book",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"patient",
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/patient/update/{aapointment_id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "42|kvvqT6eKLqlnmaFyoqTDAfR4HZccOQWNQczdLBgle95db179",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "email",
+								"value": "ramanasr8@gmail.com",
+								"type": "default"
+							},
+							{
+								"key": "password",
+								"value": "reda00kasem",
+								"type": "default"
+							},
+							{
+								"key": "phone",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "location",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "password",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"doctor_id\": 2,\r\n \r\n  \"scheduled_date\": \"2025-07-12\",\r\n  \"start_time\": \"13:30:00\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/patient/update/10",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"patient",
+								"update",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/patient/cancel/{appointment_id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "42|kvvqT6eKLqlnmaFyoqTDAfR4HZccOQWNQczdLBgle95db179",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "email",
+								"value": "ramanasr8@gmail.com",
+								"type": "default"
+							},
+							{
+								"key": "password",
+								"value": "reda00kasem",
+								"type": "default"
+							},
+							{
+								"key": "phone",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "location",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "password",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"doctor_id\": 1,\r\n \r\n  \"scheduled_date\": \"2025-07-07\",\r\n  \"start_time\": \"13:30:00\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/patient/cancel/8",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"patient",
+								"cancel",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/patient/appointments/get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "42|kvvqT6eKLqlnmaFyoqTDAfR4HZccOQWNQczdLBgle95db179",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "email",
+								"value": "ramanasr8@gmail.com",
+								"type": "default"
+							},
+							{
+								"key": "password",
+								"value": "reda00kasem",
+								"type": "default"
+							},
+							{
+								"key": "phone",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "location",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "password",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"doctor_id\": 1,\r\n \r\n  \"scheduled_date\": \"2025-07-07\",\r\n  \"start_time\": \"13:30:00\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/patient/appointments/get",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"patient",
+								"appointments",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/patient/payment/{payment_id}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "43|cJrmEebU7UgxnLygRMwXLbQxVHARGtZgATzocS0t6c7df8fa",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "email",
+								"value": "ramanasr8@gmail.com",
+								"type": "default"
+							},
+							{
+								"key": "password",
+								"value": "reda00kasem",
+								"type": "default"
+							},
+							{
+								"key": "phone",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "location",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "password",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"doctor_id\": 1,\r\n \r\n  \"scheduled_date\": \"2025-07-07\",\r\n  \"start_time\": \"13:30:00\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/patient/payment/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"patient",
+								"payment",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/patient/payments/pay/{payment_id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "43|cJrmEebU7UgxnLygRMwXLbQxVHARGtZgATzocS0t6c7df8fa",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "email",
+								"value": "ramanasr8@gmail.com",
+								"type": "default"
+							},
+							{
+								"key": "password",
+								"value": "reda00kasem",
+								"type": "default"
+							},
+							{
+								"key": "phone",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "location",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "password",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"password\":\"reda00kasem\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/patient/payments/pay/7",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"patient",
+								"payments",
+								"pay",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/patient/ratings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "43|cJrmEebU7UgxnLygRMwXLbQxVHARGtZgATzocS0t6c7df8fa",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "email",
+								"value": "ramanasr8@gmail.com",
+								"type": "default"
+							},
+							{
+								"key": "password",
+								"value": "reda00kasem",
+								"type": "default"
+							},
+							{
+								"key": "phone",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "location",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "password",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"doctor_id\":\"2\",\r\n\"rating\":\"4\",\r\n\"comment\":\"good\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/patient/ratings",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"patient",
+								"ratings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/patient/appointments/{appointment_id}/notes",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "43|cJrmEebU7UgxnLygRMwXLbQxVHARGtZgATzocS0t6c7df8fa",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "email",
+								"value": "ramanasr8@gmail.com",
+								"type": "default"
+							},
+							{
+								"key": "password",
+								"value": "reda00kasem",
+								"type": "default"
+							},
+							{
+								"key": "phone",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "location",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "password",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"doctor_id\":\"2\",\r\n\"rating\":\"4\",\r\n\"comment\":\"good\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/patient/appointments/7/notes",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"patient",
+								"appointments",
+								"7",
+								"notes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/patient/notes/{note_id}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "43|cJrmEebU7UgxnLygRMwXLbQxVHARGtZgATzocS0t6c7df8fa",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "email",
+								"value": "ramanasr8@gmail.com",
+								"type": "default"
+							},
+							{
+								"key": "password",
+								"value": "reda00kasem",
+								"type": "default"
+							},
+							{
+								"key": "phone",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "location",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "password",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"doctor_id\":\"2\",\r\n\"rating\":\"4\",\r\n\"comment\":\"good\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/patient/notes/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"patient",
+								"notes",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "receptionist",
+			"item": [
+				{
+					"name": "http://127.0.0.1:8000/api/receptionist/book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"doctor_id\": 1,\r\n  \"patient_id\": 2,\r\n  \"scheduled_date\": \"2025-07-07\",\r\n  \"start_time\": \"14:30:00\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/receptionist/book",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"receptionist",
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/receptionist/cancel/{appointment_id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "40|eH81cU1txL3vWjdNgiXK6aXABtRgfTuvveYwH2ir9d33ca63",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"doctor_id\": 1,\r\n  \"patient_id\": 2,\r\n  \"scheduled_date\": \"2025-07-07\",\r\n  \"start_time\": \"14:30:00\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/receptionist/cancel/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"receptionist",
+								"cancel",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/receptionist/status/{appointment_id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "40|eH81cU1txL3vWjdNgiXK6aXABtRgfTuvveYwH2ir9d33ca63",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\":\"confirmed\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/receptionist/status/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"receptionist",
+								"status",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/receptionist/appointment/{appintment_id}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "40|eH81cU1txL3vWjdNgiXK6aXABtRgfTuvveYwH2ir9d33ca63",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"doctor_id\": 1,\r\n  \"patient_id\": 2,\r\n  \"scheduled_date\": \"2025-07-07\",\r\n  \"start_time\": \"11:30:00\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/receptionist/appointment/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"receptionist",
+								"appointment",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/receptionist/update/8",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "40|eH81cU1txL3vWjdNgiXK6aXABtRgfTuvveYwH2ir9d33ca63",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"doctor_id\": 1,\r\n  \"patient_id\": 2,\r\n  \"scheduled_date\": \"2025-07-07\",\r\n  \"start_time\": \"11:30:00\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/receptionist/update/8",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"receptionist",
+								"update",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/receptionist/appointment/get/all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "40|eH81cU1txL3vWjdNgiXK6aXABtRgfTuvveYwH2ir9d33ca63",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"doctor_id\": 1,\r\n  \"patient_id\": 2,\r\n  \"scheduled_date\": \"2025-07-07\",\r\n  \"start_time\": \"11:30:00\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/receptionist/appointment/get/all",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"receptionist",
+								"appointment",
+								"get",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/receptionist/appointment/get/all/{date}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "40|eH81cU1txL3vWjdNgiXK6aXABtRgfTuvveYwH2ir9d33ca63",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"doctor_id\": 1,\r\n  \"patient_id\": 2,\r\n  \"scheduled_date\": \"2025-07-07\",\r\n  \"start_time\": \"11:30:00\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/receptionist/appointment/get/all/2025-07-07",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"receptionist",
+								"appointment",
+								"get",
+								"all",
+								"2025-07-07"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/receptionist/appointment/get/all/today",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "40|eH81cU1txL3vWjdNgiXK6aXABtRgfTuvveYwH2ir9d33ca63",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/receptionist/appointment/get/all/today",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"receptionist",
+								"appointment",
+								"get",
+								"all",
+								"today"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/receptionist/payments/{payment_id}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|gXcpxO5V8sIXdzMlJjXuO8bd15gHf0nCk7CQQ5QAcb883756",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "email",
+								"value": "ramanasr8@gmail.com",
+								"type": "default"
+							},
+							{
+								"key": "password",
+								"value": "reda00kasem",
+								"type": "default"
+							},
+							{
+								"key": "phone",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "location",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "password",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "wael",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "last_name",
+									"value": "header",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "ramanasr8@gmail.com",
+									"type": "default"
+								},
+								{
+									"key": "phone",
+									"value": "0951729785",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "location",
+									"value": "damascus",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "patient",
+									"type": "default"
+								},
+								{
+									"key": "gender",
+									"value": "male",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "REDA00KASEM",
+									"type": "default"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								},
+								{
+									"key": "clinic_id",
+									"value": "1",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "bio",
+									"value": "دكتور حمار",
+									"type": "default",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/receptionist/payments/all",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"receptionist",
+								"payments",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/receptionist/payments/get/{payment_id}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|gXcpxO5V8sIXdzMlJjXuO8bd15gHf0nCk7CQQ5QAcb883756",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "email",
+								"value": "ramanasr8@gmail.com",
+								"type": "default"
+							},
+							{
+								"key": "password",
+								"value": "reda00kasem",
+								"type": "default"
+							},
+							{
+								"key": "phone",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "location",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "password",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "wael",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "last_name",
+									"value": "header",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "ramanasr8@gmail.com",
+									"type": "default"
+								},
+								{
+									"key": "phone",
+									"value": "0951729785",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "location",
+									"value": "damascus",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "patient",
+									"type": "default"
+								},
+								{
+									"key": "gender",
+									"value": "male",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "REDA00KASEM",
+									"type": "default"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								},
+								{
+									"key": "clinic_id",
+									"value": "1",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "bio",
+									"value": "دكتور حمار",
+									"type": "default",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/receptionist/payments/get/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"receptionist",
+								"payments",
+								"get",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/api/receptionist/payments/destroy/{payment_id)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "44|6A3pBU4JE9alrt4uwBgmqNjlE3iJSRcehrC7muVF4f3a048e",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/receptionist/payments/destroy/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"receptionist",
+								"payments",
+								"destroy",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1|gXcpxO5V8sIXdzMlJjXuO8bd15gHf0nCk7CQQ5QAcb883756",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "email",
+						"value": "ramanasr8@gmail.com",
+						"type": "default"
+					},
+					{
+						"key": "password",
+						"value": "reda00kasem",
+						"type": "default"
+					},
+					{
+						"key": "phone",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					},
+					{
+						"key": "location",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					},
+					{
+						"key": "password",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "first_name",
+							"value": "wael",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "last_name",
+							"value": "header",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "ramanasr8@gmail.com",
+							"type": "default"
+						},
+						{
+							"key": "phone",
+							"value": "0951729785",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "location",
+							"value": "damascus",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "role",
+							"value": "patient",
+							"type": "default"
+						},
+						{
+							"key": "gender",
+							"value": "male",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "REDA00KASEM",
+							"type": "default"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": [],
+							"disabled": true
+						},
+						{
+							"key": "clinic_id",
+							"value": "1",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "bio",
+							"value": "دكتور حمار",
+							"type": "default",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/register",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1|gXcpxO5V8sIXdzMlJjXuO8bd15gHf0nCk7CQQ5QAcb883756",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "email",
+						"value": "ramanasr8@gmail.com",
+						"type": "default"
+					},
+					{
+						"key": "password",
+						"value": "reda00kasem",
+						"type": "default"
+					},
+					{
+						"key": "phone",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					},
+					{
+						"key": "location",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					},
+					{
+						"key": "password",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "first_name",
+							"value": "wael",
+							"type": "default"
+						},
+						{
+							"key": "last_name",
+							"value": "header",
+							"type": "default"
+						},
+						{
+							"key": "email",
+							"value": "waelaref8@gmail.com",
+							"type": "default"
+						},
+						{
+							"key": "phone",
+							"value": "09517297854",
+							"type": "default"
+						},
+						{
+							"key": "location",
+							"value": "damascus",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "role",
+							"value": "patient",
+							"type": "default"
+						},
+						{
+							"key": "gender",
+							"value": "male",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "Reda00kasem",
+							"type": "default"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": []
+						},
+						{
+							"key": "clinic_id",
+							"value": "",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "bio",
+							"value": "",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "blood_type",
+							"value": "A+",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "31|x0VDaGLEinwzQTrAWssyCKnc8ERqS9D7YmggQHH935e99f37",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "email",
+						"value": "ramanasr8@gmail.com",
+						"type": "default"
+					},
+					{
+						"key": "password",
+						"value": "reda00kasem",
+						"type": "default"
+					},
+					{
+						"key": "phone",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					},
+					{
+						"key": "location",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					},
+					{
+						"key": "password",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "first_name",
+							"value": "wael",
+							"type": "default"
+						},
+						{
+							"key": "last_name",
+							"value": "header",
+							"type": "default"
+						},
+						{
+							"key": "email",
+							"value": "waelaref8@gmail.com",
+							"type": "default"
+						},
+						{
+							"key": "phone",
+							"value": "09517297854",
+							"type": "default"
+						},
+						{
+							"key": "location",
+							"value": "damascus",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "role",
+							"value": "patient",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "gender",
+							"value": "male",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "Reda00kasem",
+							"type": "default"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": []
+						},
+						{
+							"key": "clinic_id",
+							"value": "",
+							"type": "default"
+						},
+						{
+							"key": "bio",
+							"value": "",
+							"type": "default"
+						},
+						{
+							"key": "blood_type",
+							"value": "A+",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/profile",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "32|dnhiae6h2ReYYvZcQvWy6IdidFiOJNiVk8GcT0nRf57c4916",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "email",
+						"value": "ramanasr8@gmail.com",
+						"type": "default"
+					},
+					{
+						"key": "password",
+						"value": "reda00kasem",
+						"type": "default"
+					},
+					{
+						"key": "phone",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					},
+					{
+						"key": "location",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					},
+					{
+						"key": "password",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "first_name",
+							"value": "wael",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "last_name",
+							"value": "header",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "waelaref8@gmail.com",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "phone",
+							"value": "09517297854",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "location",
+							"value": "damascus",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "role",
+							"value": "patient",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "gender",
+							"value": "male",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "Reda00kasem",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": [],
+							"disabled": true
+						},
+						{
+							"key": "clinic_id",
+							"value": "",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "bio",
+							"value": "",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "blood_type",
+							"value": "A+",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/logout",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/available/{doctor_id}/{date}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "30|Ms8UoUhUnU5Vcf3mETYrsKGUcB2DrOdCOiUZa5sYf05839ea",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "email",
+						"value": "ramanasr8@gmail.com",
+						"type": "default"
+					},
+					{
+						"key": "password",
+						"value": "reda00kasem",
+						"type": "default"
+					},
+					{
+						"key": "phone",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					},
+					{
+						"key": "location",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					},
+					{
+						"key": "password",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "first_name",
+							"value": "wael",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "last_name",
+							"value": "header",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "redaaref8@gmail.com",
+							"type": "default"
+						},
+						{
+							"key": "phone",
+							"value": "09517297854",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "location",
+							"value": "damascus",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "role",
+							"value": "admin",
+							"type": "default"
+						},
+						{
+							"key": "gender",
+							"value": "male",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "REDA00KASEM",
+							"type": "default"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": [],
+							"disabled": true
+						},
+						{
+							"key": "clinic_id",
+							"value": "",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "bio",
+							"value": "",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "blood_type",
+							"value": "A+",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/available/1/2025-07-07",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"available",
+						"1",
+						"2025-07-07"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/ratings/{doctor_id}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "43|cJrmEebU7UgxnLygRMwXLbQxVHARGtZgATzocS0t6c7df8fa",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "email",
+						"value": "ramanasr8@gmail.com",
+						"type": "default"
+					},
+					{
+						"key": "password",
+						"value": "reda00kasem",
+						"type": "default"
+					},
+					{
+						"key": "phone",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					},
+					{
+						"key": "location",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					},
+					{
+						"key": "password",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"doctor_id\":\"2\",\r\n\"rating\":\"4\",\r\n\"comment\":\"good\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/ratings/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"ratings",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/ratings/avg/{doctor_id}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "43|cJrmEebU7UgxnLygRMwXLbQxVHARGtZgATzocS0t6c7df8fa",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "email",
+						"value": "ramanasr8@gmail.com",
+						"type": "default"
+					},
+					{
+						"key": "password",
+						"value": "reda00kasem",
+						"type": "default"
+					},
+					{
+						"key": "phone",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					},
+					{
+						"key": "location",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					},
+					{
+						"key": "password",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"doctor_id\":\"2\",\r\n\"rating\":\"4\",\r\n\"comment\":\"good\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/ratings/avg/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"ratings",
+						"avg",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
