@@ -318,7 +318,52 @@ public function login(Request $request)
         return response()->json(['message' => 'User deleted successfully.']);
     }
     
+    public function searchPatientsByName(Request $request)
+    {
+        $searchTerm = $request->input('query');
+    
+        $patients = Patient::whereHas('user', function ($query) use ($searchTerm) {
+            if ($searchTerm) {
+                $query->where('first_name', 'like', '%' . $searchTerm . '%')
+                ->orWhere('last_name', 'like', '%' . $searchTerm . '%');
+            }
+        })->with('user:id,first_name,last_name')->get();
+    
+        $result = $patients->map(function ($patient) {
+            return [
+                'id' => $patient->id,
+                'name' => $patient->user->first_name . ' ' . $patient->user->last_name
+            ];
+        });
+    
+        return response()->json($result);
+    }
+    
+    
+    
+    public function searchDoctorsByName(Request $request)
+    {
+        $searchTerm = $request->input('query');
+    
+        $doctors = Doctor::whereHas('user', function ($query) use ($searchTerm) {
+            if ($searchTerm) {
+                $query->where('first_name', 'like', '%' . $searchTerm . '%')
+                ->orWhere('last_name', 'like', '%' . $searchTerm . '%');
+            }
+        })->with('user:id,first_name,last_name')->get();
+    
+        $result = $doctors->map(function ($doctor) {
+            return [
+                'id' => $doctor->id,
+                'name' => $doctor->user->first_name . ' ' . $doctor->user->last_name
+            ];
+        });
+    
+        return response()->json($result);
+    }
+    
 
+    
     
 }
     

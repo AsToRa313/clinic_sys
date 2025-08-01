@@ -29,6 +29,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::post('/login', [UserController::class, 'login']); // تسجيل الدخول
 Route::post('/register', [UserController::class, 'register']);//انشاء مستخدم
+Route::get('/search/patients', [UserController::class, 'searchPatientsByName']);//بحث عن المريض حسب الاسم 
+Route::get('/search/doctors', [UserController::class, 'searchDoctorsByName']);//ظظبحث عن طبيب حسب الاسم 
+
 
 Route::middleware('auth:sanctum')->group(function(){
     Route::get('/available/{doctorId}/{date}', [AppointmentController::class, 'availableSlots']);//المواعيد الموجودة
@@ -58,24 +61,27 @@ Route::middleware(['auth:sanctum', 'can:is-doctor'])->prefix('doctor')->group(fu
     Route::post('/appointments/{appointment}/notes/store', [DoctorNoteController::class, 'store']);//تسجيل ملاحظة للمريض
     Route::put('/notes/{doctorNote}', [DoctorNoteController::class, 'update']);//التعديل على ملاحظة
     Route::delete('/notes/{doctorNote}', [DoctorNoteController::class, 'destroy']);//حذف ملاحظة
+    Route::get('/search/patients', [UserController::class, 'searchPatientsByName']);//بحث عن المريض حسب الاسم 
 });
 // admin api
 Route::middleware(['auth:sanctum', 'can:is-admin'])-> prefix('admin')->group(function () {
     //wallets
     Route::post('wallet/recharge/{patientId}', [WalletController::class, 'recharge']);//شحن محفظة لمريض
     Route::post('wallet/empty/{patientId}', [WalletController::class, 'empty']);//افراغ محفظة مريض
-    Route::get('wallet/{patientId}', [WalletController::class, 'show']);//عرض محفظة مريض 
+    Route::get('wallet/{patientId}', [WalletController::class, 'show']);//عرض محفظة مريض
     Route::get('wallet/system/show', [WalletController::class, 'showSystemWallet']);//عرض محفظة النظام
     Route::get('/wallet/system/transactions', [WalletController::class, 'systemWalletTransactions']);//عرض حركة المحفظة
 //clinics
-    Route::post('/create-clinic', [ClinicController::class, 'store']);//انشاء عيادة 
+    Route::post('/create-clinic', [ClinicController::class, 'store']);//انشاء عيادة
     Route::post('clinics/update/{id}', [ClinicController::class, 'update']);//update
-    Route::delete('clinics/delete/{id}', [ClinicController::class, 'destroy']);//حذف عيادة 
+    Route::delete('clinics/delete/{id}', [ClinicController::class, 'destroy']);//حذف عيادة
     //users
     Route::post('/addUser', [UserController::class, 'adminAddUser']);//اضافة يوزر
     Route::delete('/deleteUser/{id}', [UserController::class, 'destroy']);//حذف يوزر
      Route::get('/doctors/{doctorId}/notes', [DoctorNoteController::class, 'doctorNotes']);//رؤية كل المحلاظات التي وضعها الطبيب
      Route::get('/patients/{patientId}/notes', [DoctorNoteController::class, 'patientNotes']);//رؤية كل الملاحظات التي وضعت للمريض
+     Route::get('/search/patients', [UserController::class, 'searchPatientsByName']);//بحث عن المريض حسب الاسم 
+     Route::get('/search/doctors', [UserController::class, 'searchDoctorsByName']);//ظظبحث عن طبيب حسب الاسم 
 
 });
 
@@ -95,6 +101,8 @@ Route::middleware(['auth:sanctum', 'is-receptionist'])-> prefix('receptionist')-
     Route::get('payments/{id}', [PaymentController::class, 'show']);//تفاصيل فاتورة
     Route::get('/appointments/get/patient/{id}', [AppointmentController::class, 'patientAppointments']);//احضار المواعيد الخاصة بمريض
     Route::delete('payments/destroy/{id}', [PaymentController::class, 'destroy']);//حذف فاتورة
+    Route::get('/search/patients', [UserController::class, 'searchPatientsByName']);//بحث عن المريض حسب الاسم 
+    Route::get('/search/doctors', [UserController::class, 'searchDoctorsByName']);//ظظبحث عن طبيب حسب الاسم 
 
 
 });
@@ -113,6 +121,7 @@ Route::middleware(['auth:sanctum', 'is-patient'])-> prefix('patient')->group(fun
     Route::get('/appointments/{appointment}/notes', [DoctorNoteController::class, 'index']);//رؤية كل الملاحظات التي وضعها الدكتور الخاصة بموعد
     Route::post('/ratings', [RatingController::class, 'store']);//تقييم دكتور
     Route::get('/notes/{doctorNote}', [DoctorNoteController::class, 'show']);//رؤية تفاصيل ملاحظة
+    Route::get('/search/doctors', [UserController::class, 'searchDoctorsByName']);//ظظبحث عن طبيب حسب الاسم 
 
     
 

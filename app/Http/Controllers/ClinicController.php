@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class ClinicController extends Controller
 {
-   
+
     public function index()
     {
         // Only clinics, no doctors loaded here
