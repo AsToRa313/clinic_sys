@@ -126,7 +126,9 @@ class UserController extends Controller
         'password' => 'required|string|min:6|max:255',
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         'clinic_id' => 'required_if:role,doctor|exists:clinics,id',
-        'bio' => 'required_if:role,doctor|min:6|max:255',
+        'bio' => 'required_if:role,doctor|min:6|max:255|nullable',
+        'blood_type'    => 'required_if:role,patient|in:A+,A-, B+,B-,AB+,AB-,O+,O-|nullable',
+            
     ]);
 
     DB::beginTransaction();
@@ -361,7 +363,21 @@ public function login(Request $request)
     
         return response()->json($result);
     }
+   
+
+    public function topRatedDoctors($limit = 10)
+    {
+        $doctors = Doctor::with('user')
+            ->withCount('ratings') // عدد التقييمات
+            ->withAvg('ratings', 'rating') // متوسط التقييم
+            ->orderByDesc('ratings_avg_rating') // ترتيب حسب المتوسط
+            ->take($limit) // أعلى 10 بشكل افتراضي
+            ->get();
     
+        return response()->json($doctors);
+    }
+    
+
 
     
     

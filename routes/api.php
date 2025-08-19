@@ -7,7 +7,7 @@ use App\Http\Controllers\Doctor\ScheduleController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\WalletController;
 use App\Http\Controllers\DoctorNoteController;
-
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RatingController;
 
 use Illuminate\Http\Request;
@@ -29,21 +29,23 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::post('/login', [UserController::class, 'login']); // تسجيل الدخول
 Route::post('/register', [UserController::class, 'register']);//انشاء مستخدم
-Route::get('/search/patients', [UserController::class, 'searchPatientsByName']);//بحث عن المريض حسب الاسم 
-Route::get('/search/doctors', [UserController::class, 'searchDoctorsByName']);//ظظبحث عن طبيب حسب الاسم 
+
 
 
 Route::middleware('auth:sanctum')->group(function(){
     Route::get('/available/{doctorId}/{date}', [AppointmentController::class, 'availableSlots']);//المواعيد الموجودة
     Route::post('/profile', [UserController::class, 'update']);//تعديل البروفايل
     Route::post('/logout', [UserController::class, 'logout']);//تسجيل الخروج
-    Route::get('clinics', [ClinicController::class, 'index']);//عرض العيادات list of 
+    Route::get('clinics', [ClinicController::class, 'index']);//عرض العيادات list of
     Route::get('clinics/doctors/{id}', [ClinicController::class, 'show']);// عرض عيادة بدكاترتها
     Route::get('/doctors/{id}/schedules', [ScheduleController::class, 'show']);//عرض جدول دوام الدكتور
     Route::get('/ratings/{doctorId}', [RatingController::class, 'index']);//تقييمات الدكتور
     Route::get('/ratings/avg/{doctorId}', [RatingController::class, 'showAvg']);//ظظمتوسط تقييمات الدكتوريض
+    Route::get('doctors/top-rated', [UserController::class, 'topRatedDoctors']);//عرض الاطباء حسب التقييم
 
 });
+
+
 
 
 
@@ -61,10 +63,12 @@ Route::middleware(['auth:sanctum', 'can:is-doctor'])->prefix('doctor')->group(fu
     Route::post('/appointments/{appointment}/notes/store', [DoctorNoteController::class, 'store']);//تسجيل ملاحظة للمريض
     Route::put('/notes/{doctorNote}', [DoctorNoteController::class, 'update']);//التعديل على ملاحظة
     Route::delete('/notes/{doctorNote}', [DoctorNoteController::class, 'destroy']);//حذف ملاحظة
-    Route::get('/search/patients', [UserController::class, 'searchPatientsByName']);//بحث عن المريض حسب الاسم 
+    Route::get('/search/patients', [UserController::class, 'searchPatientsByName']);//بحث عن المريض حسب الاسم
 });
 // admin api
 Route::middleware(['auth:sanctum', 'can:is-admin'])-> prefix('admin')->group(function () {
+    Route::get('/dashboard-stats', [DashboardController::class, 'getStats']);
+
     //wallets
     Route::post('wallet/recharge/{patientId}', [WalletController::class, 'recharge']);//شحن محفظة لمريض
     Route::post('wallet/empty/{patientId}', [WalletController::class, 'empty']);//افراغ محفظة مريض
@@ -78,10 +82,10 @@ Route::middleware(['auth:sanctum', 'can:is-admin'])-> prefix('admin')->group(fun
     //users
     Route::post('/addUser', [UserController::class, 'adminAddUser']);//اضافة يوزر
     Route::delete('/deleteUser/{id}', [UserController::class, 'destroy']);//حذف يوزر
-     Route::get('/doctors/{doctorId}/notes', [DoctorNoteController::class, 'doctorNotes']);//رؤية كل المحلاظات التي وضعها الطبيب
-     Route::get('/patients/{patientId}/notes', [DoctorNoteController::class, 'patientNotes']);//رؤية كل الملاحظات التي وضعت للمريض
-     Route::get('/search/patients', [UserController::class, 'searchPatientsByName']);//بحث عن المريض حسب الاسم 
-     Route::get('/search/doctors', [UserController::class, 'searchDoctorsByName']);//ظظبحث عن طبيب حسب الاسم 
+    Route::get('/doctors/{doctorId}/notes', [DoctorNoteController::class, 'doctorNotes']);//رؤية كل المحلاظات التي وضعها الطبيب
+    Route::get('/patients/{patientId}/notes', [DoctorNoteController::class, 'patientNotes']);//رؤية كل الملاحظات التي وضعت للمريض
+    Route::get('/search/patients', [UserController::class, 'searchPatientsByName']);//بحث عن المريض حسب الاسم
+    Route::get('/search/doctors', [UserController::class, 'searchDoctorsByName']);//ظظبحث عن طبيب حسب الاسم
 
 });
 

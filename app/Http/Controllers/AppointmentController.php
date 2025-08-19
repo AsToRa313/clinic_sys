@@ -492,7 +492,7 @@ public function patientAppointmentsBy()
 public function doctorAppointments($doctorId)
 {
     $appointments = Appointment::where('doctor_id', $doctorId)
-        ->with(['patient']) // لو حابب تعرض معلومات المريض
+        ->with(['patient.user']) // لو حابب تعرض معلومات المريض
         ->orderBy('scheduled_date', 'asc')
         ->orderBy('start_time', 'asc')
         ->get();

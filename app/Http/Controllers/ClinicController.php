@@ -26,6 +26,10 @@ class ClinicController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'description' => 'nullable|string|min:2|max:124',
         ]);
+    
+
+
+
 
         DB::beginTransaction();
 
@@ -141,4 +145,6 @@ class ClinicController extends Controller
             ], 500);
         }
     }
+
+    
 }
